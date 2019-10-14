@@ -85,7 +85,26 @@ public class ProblemSet4 {
      */
 
     public void reverse() {
+        int originalNumber;
+        String reverseNumber = "";
+        System.out.print("\n");
+        do {
+            System.out.print("Positive integer: ");
+            originalNumber = in .nextInt();
+        } while (originalNumber <= 0);
 
+        String originalNumberStr = Integer.toString(originalNumber);
+        int lastIndexInt = originalNumberStr.length() - 1;
+
+
+
+        for (int currentIndex = lastIndexInt; currentIndex >= 0; currentIndex--) {
+            reverseNumber += originalNumberStr.substring(currentIndex, currentIndex + 1)+", ";
+        }
+        reverseNumber = reverseNumber.substring(0, reverseNumber.length() - 2) + ".";
+        System.out.print("\n");
+        System.out.print(reverseNumber);
+        System.out.print("\n");
     }
 
     /*
