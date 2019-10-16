@@ -115,7 +115,30 @@ public class ProblemSet4 {
      */
 
     public void digits() {
+        int positiveInteger;
+        int oddSum = 0;
+        String currentDigitStr = "";
+        int currentDigit;
+        System.out.print("\n");
+        do {
+            System.out.print("Positive integer: ");
+            positiveInteger = in .nextInt();
+        } while (positiveInteger <= 0);
 
+        String numberString = Integer.toString(positiveInteger);
+
+        for (int currentIndex = 0; currentIndex <= numberString.length() - 1; currentIndex++) {
+            currentDigitStr = numberString.substring(currentIndex, currentIndex + 1);
+
+            currentDigit = Integer.parseInt(currentDigitStr);
+            if (currentDigit % 2 == 1) {
+            oddSum += currentDigit;
+            }
+        }
+        System.out.print("\n");
+        System.out.print(oddSum);
+        System.out.print(".");
+        System.out.print("\n");
     }
 
     /*
