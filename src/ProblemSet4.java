@@ -151,6 +151,27 @@ public class ProblemSet4 {
 
     public void average() {
 
+        double sumOfSeries = 0.00;
+        double averageOfSeries;
+        double seriesSize = 0.00;
+        int numberOfSeries;
+
+        System.out.print("\n");
+
+        do {
+            System.out.print("Non-negative integer: ");
+            numberOfSeries = in .nextInt();
+            if (numberOfSeries > 0) {
+                sumOfSeries += numberOfSeries;
+                seriesSize++;
+            }
+        } while (numberOfSeries > 0 || seriesSize == 0);
+
+        averageOfSeries = Math.round((sumOfSeries / seriesSize) * 100.00) /  100.00;
+
+        System.out.print("\n");
+        System.out.printf("%,.2f", averageOfSeries);
+        System.out.print(".\n");
     }
 
     /*
@@ -160,7 +181,12 @@ public class ProblemSet4 {
      */
 
     public void prime() {
-
+        int primeOrNot;
+        do {
+            System.out.print("Non-negative integer: ");
+            primeOrNot = in .nextInt();
+        } while (positiveInteger < 0);
+        
     }
 
     /*
