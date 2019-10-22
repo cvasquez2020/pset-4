@@ -27,10 +27,10 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        ps.sum();
-        ps.reverse();
-        ps.digits();
-        ps.average();
+        //ps.sum();
+        //ps.reverse();
+        //ps.digits();
+        //ps.average();
         ps.prime();
         ps.fibonacci();
         ps.factors();
@@ -54,7 +54,7 @@ public class ProblemSet4 {
     public void sum() {
         int lowerBound;
         int upperBound;
-        System.out.print("\n");
+        System.out.println();
         do {
             System.out.print("Lower bound: ");
             lowerBound = in .nextInt();
@@ -71,10 +71,10 @@ public class ProblemSet4 {
                 sum += currentInteger;
             }
         }
-        System.out.print("\n");
+        System.out.println();
         System.out.printf("%,d", sum);
         System.out.print(".");
-        System.out.print("\n");
+        System.out.println();
     }
 
     /*
@@ -87,7 +87,7 @@ public class ProblemSet4 {
     public void reverse() {
         int originalNumber;
         String reverseNumber = "";
-        System.out.print("\n");
+        System.out.println();
         do {
             System.out.print("Positive integer: ");
             originalNumber = in .nextInt();
@@ -102,9 +102,9 @@ public class ProblemSet4 {
             reverseNumber += originalNumberStr.substring(currentIndex, currentIndex + 1)+", ";
         }
         reverseNumber = reverseNumber.substring(0, reverseNumber.length() - 2) + ".";
-        System.out.print("\n");
+        System.out.println();
         System.out.print(reverseNumber);
-        System.out.print("\n");
+        System.out.println();
     }
 
     /*
@@ -119,7 +119,7 @@ public class ProblemSet4 {
         int oddSum = 0;
         String currentDigitStr = "";
         int currentDigit;
-        System.out.print("\n");
+        System.out.println();
         do {
             System.out.print("Positive integer: ");
             positiveInteger = in .nextInt();
@@ -135,10 +135,10 @@ public class ProblemSet4 {
             oddSum += currentDigit;
             }
         }
-        System.out.print("\n");
+        System.out.println();
         System.out.print(oddSum);
         System.out.print(".");
-        System.out.print("\n");
+        System.out.println();
     }
 
     /*
@@ -156,7 +156,7 @@ public class ProblemSet4 {
         double seriesSize = 0.00;
         int numberOfSeries;
 
-        System.out.print("\n");
+        System.out.println();
 
         do {
             System.out.print("Non-negative integer: ");
@@ -169,7 +169,7 @@ public class ProblemSet4 {
 
         averageOfSeries = Math.round((sumOfSeries / seriesSize) * 100.00) /  100.00;
 
-        System.out.print("\n");
+        System.out.println();
         System.out.printf("%,.2f", averageOfSeries);
         System.out.print(".\n");
     }
@@ -181,12 +181,27 @@ public class ProblemSet4 {
      */
 
     public void prime() {
-        int primeOrNot;
+        int primeOrNot = 0;
+        String primeStatus = "Prime.";
+
+        System.out.println();
         do {
             System.out.print("Non-negative integer: ");
             primeOrNot = in .nextInt();
-        } while (positiveInteger < 0);
-        
+        } while (primeOrNot < 0);
+
+        for (int i = primeOrNot - 1; i > 1; i--) {
+            if (primeOrNot % i == 0)  {
+                primeStatus = "Not prime.";
+            }
+        }
+
+        System.out.println();
+        System.out.print(primeStatus);
+        System.out.println();
+
+
+
     }
 
     /*
