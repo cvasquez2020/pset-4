@@ -31,7 +31,7 @@ public class ProblemSet4 {
         //ps.reverse();
         //ps.digits();
         //ps.average();
-        ps.prime();
+        //ps.prime();
         ps.fibonacci();
         ps.factors();
         ps.mario();
@@ -212,6 +212,28 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
+        int nf = 0;
+        int n1 = 0;
+        int n2 = 1;
+
+        int fibonacci = 0;
+
+        System.out.println();
+        do {
+            System.out.print("Positive integer: ");
+            nf = in .nextInt();
+        } while (nf < 1 || nf > 92);
+        for (int i = 1; i <= nf; i++) {
+
+            ni =  n1 + n2;
+            n1  = n2;
+            n2 = nf;
+
+        }
+
+        System.out.println();
+        System.out.print(fibonacci);
+        System.out.println();
 
     }
 
