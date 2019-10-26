@@ -212,28 +212,27 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
-        int nf = 0;
-        int n1 = 0;
-        int n2 = 1;
 
+        int numberFinal = 0;
         int fibonacci = 0;
-
+        int firstFibonacci = 0;
+        int secondFibonacci = 1;
         System.out.println();
         do {
             System.out.print("Positive integer: ");
-            nf = in .nextInt();
-        } while (nf < 1 || nf > 92);
-        for (int i = 1; i <= nf; i++) {
+            numberFinal = in .nextInt();
+        } while (numberFinal < 1 || numberFinal > 92);
 
-            ni =  n1 + n2;
-            n1  = n2;
-            n2 = nf;
 
-        }
-
-        System.out.println();
-        System.out.print(fibonacci);
-        System.out.println();
+        for (int i = 0; i < numberFinal; i++) {
+            if (i % 2 == 0) {
+                firstFibonacci = fibonacci;
+            } else {
+                secondFibonacci = fibonacci;
+            }
+            fibonacci = firstFibonacci + secondFibonacci;
+            }
+        System.out.print("\n"+fibonacci+"."+"\n");
 
     }
 
