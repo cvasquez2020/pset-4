@@ -17,7 +17,7 @@
  */
 
 import java.util.Scanner;
-
+import java.util.ArrayList;
 public class ProblemSet4 {
 
     private static Scanner in = new Scanner(System.in);
@@ -32,10 +32,10 @@ public class ProblemSet4 {
         //ps.digits();
         //ps.average();
         //ps.prime();
-        ps.fibonacci();
-        ps.factors();
-        ps.mario();
-        ps.luigi();
+        //ps.fibonacci();
+        //ps.factors();
+        //ps.mario();
+        //ps.luigi();
         ps.credit();
 
         in.close();
@@ -213,14 +213,14 @@ public class ProblemSet4 {
 
     public void fibonacci() {
 
-        int numberFinal = 0;
-        int fibonacci = 0;
-        int firstFibonacci = 0;
-        int secondFibonacci = 1;
+        long numberFinal = 0;
+        long fibonacci = 0;
+        long firstFibonacci = 0;
+        long secondFibonacci = 1;
         System.out.println();
         do {
             System.out.print("Positive integer: ");
-            numberFinal = in .nextInt();
+            numberFinal = in .nextLong();
         } while (numberFinal < 1 || numberFinal > 92);
 
 
@@ -232,7 +232,7 @@ public class ProblemSet4 {
             }
             fibonacci = firstFibonacci + secondFibonacci;
             }
-        System.out.print("\n"+fibonacci+"."+"\n");
+        System.out.print("\n"+fibonacci+".\n");
 
     }
 
@@ -243,7 +243,44 @@ public class ProblemSet4 {
      */
 
     public void factors() {
+        int toFactor = 0;
 
+        ArrayList<Integer> factorList = new ArrayList<Integer>();
+        boolean notRepeat = true;
+        String factorsOutput = "";
+        System.out.println();
+
+        do {
+            System.out.print("Positive integer: ");
+            toFactor = in .nextInt();
+        } while (toFactor < 1);
+
+        for (int i = 1; i <= toFactor/2; i++) {
+            for (int j  = 1; j <= factorList.size() - 1; j++) {
+                if (factorList.get(j) == i || factorList.get(j) == toFactor / i) {
+                notRepeat = false;
+                }
+            }
+            if (toFactor % i == 0 && notRepeat) {
+                factorList.add(i);
+            }
+        }
+
+        for (int i = 0; i <= factorList.size() - 1; i++) {
+            if (factorList.get(i) != 0) {
+                if (factorList.get(i) != 1) {
+                    if (factorList.get(i) != toFactor / factorList.get(i)) {
+                    factorsOutput += ", " + factorList.get(i) + ", " + toFactor / factorList.get(i);
+                    } else {
+                    factorsOutput += ", " + factorList.get(i);
+                    }
+                } else {
+                    factorsOutput += factorList.get(i) + ", " + toFactor / factorList.get(i);
+                }
+            }
+        }
+
+        System.out.print("\n"+factorsOutput+".\n");
     }
 
     /*
@@ -254,7 +291,30 @@ public class ProblemSet4 {
      */
 
     public void mario() {
+        int marioHeight = 0;
+        int spaces = 0;
+        int blocks = 2;
+        int width = 0;
+        System.out.println();
 
+        do {
+            System.out.print("Height: ");
+            marioHeight = in .nextInt();
+        } while (marioHeight < 1 || marioHeight > 24);
+        System.out.println();
+        width = marioHeight + 1;
+
+        for (int i = marioHeight; i > 0; i--) {
+                spaces = width - blocks;
+                for (int j = spaces; j > 0; j--) {
+                    System.out.print(" ");
+                }
+                for (int j = blocks; j > 0; j--) {
+                    System.out.print("#");
+                }
+            System.out.println();
+            blocks++;
+        }
     }
 
     /*
@@ -265,7 +325,34 @@ public class ProblemSet4 {
      */
 
     public void luigi() {
+        int luigiHeight = 0;
+        int row = 0;
+        int spaces = 0;
+        int blocks = 2;
+        int width = 0;
+        System.out.println();
+        do {
+            System.out.print("Height: ");
+            luigiHeight = in .nextInt();
+        } while (luigiHeight < 1 || luigiHeight > 24);
+        System.out.println();
+        width = luigiHeight + 1;
 
+        for (int i = luigiHeight; i > 0; i--) {
+            spaces = width - blocks;
+            for (int j = spaces; j > 0; j--) {
+                System.out.print(" ");
+            }
+            for (int j = blocks; j > 0; j--) {
+                System.out.print("#");
+            }
+            System.out.print("  ");
+            for (int j = blocks; j > 0; j--) {
+                System.out.print("#");
+        }
+        System.out.println();
+        blocks++;
+        }
     }
 
     /*
@@ -276,6 +363,29 @@ public class ProblemSet4 {
      */
 
     public void credit() {
+        long cardNumber = 0;
+        String sumOneString = "";
+        long sumTwo = 0;
+        int sumOne = 0;
+        do {
+            System.out.print("Nubmer: ");
+            cardNumber = in .nextLong();
+        } while (cardNumber <= 0);
 
+        String cardStr = Long.toString(cardNumber);
+        for (int i = cardStr.length() - 2; i > -1; i -= 2) {
+            sumOneString += Integer.toString(2 * Integer.parseInt(cardStr.substring(i, i + 1)));
+        }
+
+        for (int i = sumOneString.length() - 1; i >= 0; i --) {
+
+            sumOne += Integer.parseInt(sumOneString.substring(i, i + 1));
+        }
+
+
+        for (int i = cardStr.length() - 1; i >= 0; i -= 2 ) {
+            sumTwo += Integer.parseInt(cardStr.substring(i, i + 1));
+        }
+        System.out.println(sumOne + sumTwo);
     }
 }
