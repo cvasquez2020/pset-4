@@ -1,4 +1,4 @@
-/**
+ /**
  * Problem Set 4.
  *
  * It's time to put your skills to the test. This problem set focuses on using
@@ -18,6 +18,7 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
+
 public class ProblemSet4 {
 
     private static Scanner in = new Scanner(System.in);
@@ -27,15 +28,15 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        //ps.sum();
-        //ps.reverse();
-        //ps.digits();
-        //ps.average();
-        //ps.prime();
-        //ps.fibonacci();
-        //ps.factors();
-        //ps.mario();
-        //ps.luigi();
+        ps.sum();
+        ps.reverse();
+        ps.digits();
+        ps.average();
+        ps.prime();
+        ps.fibonacci();
+        ps.factors();
+        ps.mario();
+        ps.luigi();
         ps.credit();
 
         in.close();
@@ -99,7 +100,7 @@ public class ProblemSet4 {
 
 
         for (int currentIndex = lastIndexInt; currentIndex >= 0; currentIndex--) {
-            reverseNumber += originalNumberStr.substring(currentIndex, currentIndex + 1)+", ";
+            reverseNumber += originalNumberStr.substring(currentIndex, currentIndex + 1) + ", ";
         }
         reverseNumber = reverseNumber.substring(0, reverseNumber.length() - 2) + ".";
         System.out.println();
@@ -190,10 +191,14 @@ public class ProblemSet4 {
             primeOrNot = in .nextInt();
         } while (primeOrNot < 0);
 
-        for (int i = primeOrNot - 1; i > 1; i--) {
-            if (primeOrNot % i == 0)  {
+        for (int i = primeOrNot - 1; i > 0; i--) {
+            if (primeOrNot % i == 0 && i != 1)  {
                 primeStatus = "Not prime.";
             }
+        }
+
+        if (primeOrNot == 0) {
+            primeStatus = "Not prime.";
         }
 
         System.out.println();
@@ -232,7 +237,7 @@ public class ProblemSet4 {
             }
             fibonacci = firstFibonacci + secondFibonacci;
             }
-        System.out.print("\n"+fibonacci+".\n");
+        System.out.print("\n" + fibonacci + ".\n");
 
     }
 
@@ -255,7 +260,7 @@ public class ProblemSet4 {
             toFactor = in .nextInt();
         } while (toFactor < 1);
 
-        for (int i = 1; i <= toFactor/2; i++) {
+        for (int i = 1; i <= toFactor / 2; i++) {
             for (int j  = 1; j <= factorList.size() - 1; j++) {
                 if (factorList.get(j) == i || factorList.get(j) == toFactor / i) {
                 notRepeat = false;
@@ -280,7 +285,7 @@ public class ProblemSet4 {
             }
         }
 
-        System.out.print("\n"+factorsOutput+".\n");
+        System.out.print("\n" + factorsOutput + ".\n");
     }
 
     /*
@@ -365,8 +370,11 @@ public class ProblemSet4 {
     public void credit() {
         long cardNumber = 0;
         String sumOneString = "";
-        long sumTwo = 0;
+        int sumTwo = 0;
         int sumOne = 0;
+        String cardType = "invalid";
+
+        System.out.println();
         do {
             System.out.print("Nubmer: ");
             cardNumber = in .nextLong();
@@ -378,14 +386,32 @@ public class ProblemSet4 {
         }
 
         for (int i = sumOneString.length() - 1; i >= 0; i --) {
-
             sumOne += Integer.parseInt(sumOneString.substring(i, i + 1));
         }
-
 
         for (int i = cardStr.length() - 1; i >= 0; i -= 2 ) {
             sumTwo += Integer.parseInt(cardStr.substring(i, i + 1));
         }
-        System.out.println(sumOne + sumTwo);
+
+            if (cardStr.length() == 15 && (cardStr.substring(0, 2).equals("37") || cardStr.substring(0, 2).equals("34")) && ((sumOne + sumTwo) % 10 == 0)) {
+                cardType = "Amex";
+            }  else if ((cardStr.length() == 16 || cardStr.length() == 13) && ((sumOne + sumTwo) % 10 == 0) && (cardStr.substring(0, 1).equals("4"))) {
+                cardType = "Visa";
+            } else if (cardStr.length() == 16 && ((sumOne + sumTwo) % 10 == 0)) {
+                switch (cardStr.substring(0, 2)) {
+                    case "51":
+                    cardType = "Mastercard"; break;
+                    case "52":
+                    cardType = "Mastercard"; break;
+                    case "53":
+                    cardType = "Mastercard"; break;
+                    case "54":
+                    cardType = "Mastercard"; break;
+                    case "55":
+                    cardType = "Mastercard"; break;
+                }
+            }
+
+        System.out.print("\n" + cardType + ".\n");
     }
 }
